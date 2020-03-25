@@ -1,21 +1,151 @@
-<html>
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Roderik's to do - list by Roderik Pajunen</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+    <style>
+    body
+        {
+        background-color: hsl(215, 100%, 65%); 
+        text-align: center;
+        margin-top: 10%;
+        margin-bottom: 10%;
+        }
+        h1 
+        {
+            border: 5px solid #fff;
+        }
+    #keskus
+        {
+            background-color: rgba(6, 34, 255, 0.58);
+            height: auto;
+            width: 500px;
+            margin: auto;
+            padding: 10px;
+            border: 5px solid rgb(213, 232, 255);
+            color: #fff;
+            border-radius: 10px;
+            font-family: fantasy;
+            text-overflow: clip;
+        }
+    #nappi
+        {
+            background-color: blue;
+            border-radius: 10px;
+            color: #fff;
+        }
+    </style>
+</head>
+
 <body>
-<h2>Web-sovellusten kehitt&auml;minen Javascriptill&auml; K2020</h2>
-<h3> Opiskelijan nimi </h3>
-<p>T&auml;lle sivulle kootaan kurssilla tekem&auml;si Workshop-harjoitukset, sek&auml; my&ouml;s itsen&auml;iset projektit.</p>
-<h3>Workshop 0:</h3>
-<p>Mit&auml; asioita opit t&auml;ss&auml; harjoituksessa?</p>
-<p>Mik&auml; j&auml;i askarruttamaan?</p>
-<p><a href="#">Linkki teht&auml;v&auml;sivuun</a></p>
-<p>&nbsp;</p>
-<h3>Workshop 1:</h3>
-<p>Mit&auml; asioita opit t&auml;ss&auml; harjoituksessa?</p>
-<p>Mik&auml; j&auml;i askarruttamaan?</p>
-<p><a href="#">Linkki teht&auml;v&auml;sivuun</a></p>
-<h3>&nbsp;</h3>
-<h3>Workshop 2:</h3>
-<p>Mit&auml; asioita opit t&auml;ss&auml; harjoituksessa?</p>
-<p>Mik&auml; j&auml;i askarruttamaan?</p>
-<p><a href="#">Linkki teht&auml;v&auml;sivuun</a></p>
-</body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+    <script>
+        if (typeof(Storage) !== "undefined") {   //tarkistetaan , että onko jäänyt tietoja edelliseltä istunnolta
+            if (!localStorage.laskuri) { 
+            localStorage.laskuri = 0; //jos ei ole, niin sitten alustetaan laskuri
+        }
+        }else {
+            document.write('Virhe!'); //jos localstorage.laskuri:a ei pystytä luomaan, niin silloin tulee virheilmoitus sivulle
+        }
+// tämä funktio lisää laskuria yhdellä
+        function maara() {
+            if (localStorage.laskuri) { 
+            localStorage.laskuri++;
+            }
+            document.getElementById('counter').innerHTML = "You have " + localStorage.laskuri + " thing(s) to do.";
+
+            }
+  // tämä funktio vähentää laskuria yhdellä  
+        function miinus() {
+            if (localStorage.laskuri) { 
+            localStorage.laskuri--;
+            }
+            document.getElementById('counter').innerHTML = "You have " + localStorage.laskuri + " thing(s) to do.";
+            }
+        
+    // tämä funktio hakee historiasta sinne tallenetut tehtävät    
+        function lataaminen() {
+            if (localStorage.historia) {
+                var kaikki = localStorage.getItem("historia");
+                var nayta = document.getElementById('kokolista');
+                nayta.innerHTML = kaikki;
+            }
+        }
+        
+
+    // tämä funktio lisää kirjoitetun tehtävän listaan
+        function lisaaminen() {
+            var uusi = haku.elements.todolist.value;
+            var lista = document.getElementById('kokolista');
+            var tarkeus = haku.elements.importance.value;
+            if (uusi == "" || uusi == null){ //jos tekstikentässä ei ole tekstiä, niin silloin tulee virheilmoitus
+                teksti.innerHTML = "Virhe!";
+                return false;
+            } else {
+                lista.innerHTML += '<div onclick="poista(this);"><input type="checkbox">' + uusi + ' (' + tarkeus + ')' + '</div>';
+                teksti.innerHTML = "";
+                localStorage.setItem('historia',lista.innerHTML);
+                maara(); //laskuria lisätään yhdellä
+                return false;  
+            }
+
+        }
+        
+        //tämä funktio poistaa tehtävän listalta 
+        function poista(elementId) {
+            elementId.parentNode.removeChild(elementId);
+            var sisalto = document.getElementById('kokolista');
+            localStorage.setItem('historia',sisalto.innerHTML);
+            miinus(); //laskuria vähennetään yhdellä
+        }
+        
+    </script>
+</body><div id="keskus">
+<h1>Roderik's to do - list</h1>
+    <h2>By Roderik Pajunen</h2>
+    <br> <div id="counter"> </div>
+    <form name="haku" onsubmit="return lisaaminen();" >
+        What to do? <input type="text" id="todolist">  <br>
+        How important? <br> <select id="importance" name="options">
+  <option>Low</option>
+  <option>Medium</option>
+  <option>High</option>
+</select>
+        <input id="nappi" type="submit" value="Add">
+    </form>
+    <div id="kokolista">
+        <script>
+        lataaminen();
+        </script>
+    </div>
+    <div id="teksti" style="color:red;"></div>
+    </div>
 </html>
