@@ -30,7 +30,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script> 
         $(document).ready(function () {
-			
+			// animoidaan keskellä oleva 'laatikko'
 			$('#paa').animate({
                         height: '150px',
                         width: '300px'
@@ -42,6 +42,7 @@
         </head>
 <body>
         <script>
+		// Tampereen sää
             function tampere() {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -49,10 +50,11 @@
             var data = JSON.parse(this.responseText);
             document.getElementById("kuva").class = data.weather.icon;
             document.getElementById("kaupunki").innerHTML = "Kaupunki: " + data.name;
-            document.getElementById("aste").innerHTML = "Asteet: " + data.main.temp_max + " C";
+            document.getElementById("aste").innerHTML = "<h1>" + data.main.temp_max + " C";
             document.getElementById("tunne").innerHTML = "Tuntuu kuin: " + data.main.feels_like + " C";
             document.getElementById("tuuli").innerHTML = "Tuulen nopeus: " + data.wind.speed + "m/s";
-            if (data.weather.id = 800) {
+            // Tausta muuttuu säätilan mukaan
+		    if (data.weather.id = 800) {
             document.body.style.backgroundColor = "blue";
             } else if (data.weather.id = 801) {
             document.body.style.backgroundColor = "white"; 
@@ -75,7 +77,7 @@
             if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
             document.getElementById("kaupunki").innerHTML = "Kaupunki: " + data.name;
-            document.getElementById("aste").innerHTML = "Asteet: " + data.main.temp_max + " C";
+            document.getElementById("aste").innerHTML = "Asteet: " + data.main.temp_max + " C </h1>";
             document.getElementById("tunne").innerHTML = "Tuntuu kuin: " + data.main.feels_like + " C";
             document.getElementById("tuuli").innerHTML = "Tuulen nopeus: " + data.wind.speed + "m/s";
             if (data.weather.id = 800) {
