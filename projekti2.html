@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <title>Sää</title>
+<style>
+    body {
+        margin-top: 10%;
+        text-align: center;
+        background-color: rgb(26, 107, 204);
+    }
+    #paa {
+        background-color: rgb(0, 196, 255);
+        height: auto;
+        width: 600px;
+        height: 400px;
+        margin: auto;
+        padding: 10px;
+        border: 5px solid rgb(213, 232, 255);
+        color: #fff;
+        border-radius: 10px;
+        font-family: fantasy;
+        text-overflow: clip;
+    }
+    button
+        {
+        background-color: blue;
+        border-radius: 10px;
+        color: #fff;
+    }
+    a:link {
+        color: #fff;
+    }
+    a:visited {
+        color: #fff;
+    }
+    a:hover {
+        color: #3455c1;
+    }
+
+        </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script> 
+    // Animoidaan keskellä oleva laatikko
+        $(document).ready(function () {
+			
+			$('#paa').animate({
+                        height: '300px',
+                        width: '300px'
+                    },
+                    4000);
+			});
+</script>
+
+        </head>
+<body>
+        <script>
+            // Tampereen sää
+            function tampere() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            document.getElementById("kaupunki").innerHTML = data.name;
+            document.getElementById("aste").innerHTML = "<h1>" + data.main.temp_max + " C </h1>";
+            document.getElementById("tunne").innerHTML = "Tuntuu kuin: " + data.main.feels_like + " C";
+            document.getElementById("tuuli").innerHTML = "Tuulen nopeus: " + data.wind.speed + " m/s";
+
+        }
+        };
+        xmlhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Tampere&units=metric&mode=json&APPID=94694a51a1a8d1bdf70350341d32ee69", true);
+        xmlhttp.send();
+        }
+         // Ladataan tiedot palvelimelta ja tämä on myöskin Helsingin sää 
+            function lataa() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            document.getElementById("kaupunki").innerHTML = data.name;
+            document.getElementById("aste").innerHTML = "<h1>" + data.main.temp_max + " C </h1>";
+            document.getElementById("tunne").innerHTML = "Tuntuu kuin: " + data.main.feels_like + " C";
+            document.getElementById("tuuli").innerHTML = "Tuulen nopeus: " + data.wind.speed + " m/s";
+        }
+
+
+};
+                xmlhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Helsinki&units=metric&mode=json&APPID=94694a51a1a8d1bdf70350341d32ee69", true);
+                xmlhttp.send();
+            }
+            // Oulun sää
+            function oulu() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            document.getElementById("kaupunki").innerHTML = data.name;
+            document.getElementById("aste").innerHTML = "<h1>" + data.main.temp_max + " C </h1>";
+            document.getElementById("tunne").innerHTML = "Tuntuu kuin: " + data.main.feels_like + " C";
+            document.getElementById("tuuli").innerHTML = "Tuulen nopeus: " + data.wind.speed + " m/s";
+        }
+
+
+        };
+        xmlhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Oulu&units=metric&mode=json&APPID=94694a51a1a8d1bdf70350341d32ee69", true);
+        xmlhttp.send();
+        }
+            
+</script>
+    <div id="paa"> 
+        <script>lataa();</script>
+    <div id="kaupunki"></div>
+    <div id="aste"></div>
+    <div id="tunne"></div>
+    <div id="tuuli"></div>
+        <p></p>
+    <div id="tam"><button onclick="tampere()">Tampere</button></div>
+    <div id="hel"><button onclick="lataa()">Helsinki</button></div>
+    <div id="oul"><button onclick="oulu()">Oulu</button></div>
+        <p></p>
+    <div>By Roderik Pajunen</div>
+    <div><a href="http://www.roderik.fi">roderik.fi</a></div>
+    </div>
+    </body>
+</html>
+
