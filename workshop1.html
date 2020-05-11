@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+</head>
+
+<body>
+    <h1>Welcome to example page</h1>
+    <p><script>
+        document.write("This text was created by Javascript by ");
+        var etunimi = "Roderik"; 
+var sukunimi = "Pajunen";
+alert(etunimi);
+
+document.write(sukunimi);
+alert(etunimi+" "+sukunimi);
+
+
+        var x = 45;
+var order = 'Coca-colaa';
+
+if (x > 50) {
+    document.write("He's over 50!" );
+} else if (x <= 50 && x > 30){
+    document.write("<h1>Olet mies joka juo </h1>"+order);
+} else if (x > 70) {
+    document.write("Olet vanha nuori!");
+} else {
+    document.write("Olet nuori");  
+}
+
+        </script></p>
+<script>
+        // Returns true if age is over 18, otherwise returns false
+
+    var people = [
+            {
+                firstname: 'Matti',
+                lastname: 'Virtanen',
+                age: 53,
+                eyeColor: 'blue',
+                address: 'New York Street',
+                phone: '123435',
+                printInfo: function() {return(this.firstname + ' ' + this.lastname + '<br/>')}
+            },
+            {
+                firstname: 'Jarkko',
+                lastname: 'Kallio',
+                age: 42,
+                eyeColor: 'brown',
+                address: 'Florida Street',
+                phone: '123435',
+                printInfo: function() {return(this.firstname + ' ' + this.lastname + '<br/>')}
+            }
+        ]
+        var text="Ihmiset:";
+        for(i=0; i<people.length; i++) {
+            text += people[i].printInfo();
+        }
+        document.write(text);
+
+console.log(people.age);
+        function tarpeeksivanha(vuosimalli) {
+            if (vuosimalli < 18){
+                console.log('FALSE: Age is ' + vuosimalli);
+                return false;
+            }else
+                console.log('true');
+                return 'TRUE: Age is ' + vuosimalli;
+        }
+        alert(tarpeeksivanha(5));
+        alert(tarpeeksivanha(25));
+var arr = [];
+for (var i=0; i<15; i++) {
+    arr.push( Math.random() );
+}
+document.write(arr);
+        
+var i = 5; var j = 10;
+var k = 25; var l = "Joe";
+
+if (i < j) { 
+ console.log(i);
+}else if (j > k) {
+console.log(k);
+} else {
+    console.log(j);
+    var arr = [3, 5, 7];
+}
+for (var i = 0; i <=2; ++i){
+console.log(arr[i]);
+}
+
+</script>
+    <script>
+    var ika = 45;
+var koiranika = ika * 7;
+document.write("Ihmisen ikä:" + ika);
+document.write("<p>Koiran ikänä:" + koiranika);</script>
+</body>
+
+</html>
