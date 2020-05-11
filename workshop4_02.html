@@ -1,0 +1,23 @@
+<html>
+<body>
+    <h1 id=otsikko>Workshop 4</h1>
+    <button onclick="vaihda();">Button 1</button>
+    <button onclick="fontti();">Button 2</button>
+    <button onclick="teksti();">Button 3</button>
+    <h2 id="pieni_otsikko">Exercise 2</h2>
+    <div id="lorem">"Lorem ipsum dolor</div>"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. "
+    <script>
+    function vaihda() {
+        document.getElementById("otsikko").innerHTML = "Modified Heading!";
+    }
+    function fontti() {
+        document.getElementById("pieni_otsikko").style.color = "red";
+        document.getElementById("pieni_otsikko").style.backgroundColor = "blue";
+        document.getElementById("pieni_otsikko").style.fontSize = "small";
+        document.getElementById("pieni_otsikko").style.fontStyle = "bold";
+    }
+    function teksti() {
+        document.getElementById("lorem").style.fontStyle = "bold";
+    }
+    </script>
+</body></html>

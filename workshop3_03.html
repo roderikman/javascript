@@ -1,0 +1,23 @@
+    <!DOCTYPE html>
+    <html>
+    <body>
+        <textarea id="textdata" rows="4" cols="50" onfocus="teksti();" onkeydown="count();">
+
+</textarea>
+        <h3 id="counter"></h3>
+    <script>
+        var counter = 0;
+function teksti() {
+                var boksi = document.getElementById('textdata');
+                boksi.value='Please fill in with proper data!'
+                boksi.style ="background: red";
+}
+function count() {
+                counter++;
+                document.getElementById('counter').innerHTML = counter;
+}
+
+    </script>
+
+    </body>
+    </html>

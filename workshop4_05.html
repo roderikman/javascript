@@ -1,0 +1,47 @@
+<html>
+<body>
+        <p>Select a new car from the list.</p>
+		<select name="mySelect" id="mySelect" onchange="changeImage()">
+			<option value="BMW">BMW</option>         
+			<option value="Audi">Audi</option>
+			<option value="Mercedes">Mercedes</option>
+			<option value="Volvo">Volvo</option>
+		</select>
+    <img src="car.jpg" id="kuva">
+    <button onclick="changePosition()">Change position</button>
+    <button onclick="doMove()">Animate</button>
+       <button onclick="fadeOut()">Fade out</button>
+    <button onclick="hide()">Hide</button>
+    <script>
+            function changePosition(){
+                document.getElementById('kuva').style.position = "relative";
+                document.getElementById('kuva').style.top="+500px";
+                document.getElementById('kuva').style.left="-200px";
+            }
+
+            function animate(){
+                setInterval(function(){doMove();},1000);
+            }
+            function doMove() {
+                var img = document.getElementById('kuva');
+                img.position = "relative";
+                var left = parseInt(img.style.left);
+                img.style.left = (left+10)+'px';
+                console.log("Moved to "+left+"px");
+            }
+            function fadeOut(){
+                setInterval(function(){doFadeOut();},1000);
+            }
+            function doFadeOut(){
+                var img = document.getElementById('kuva');
+                var opac = parseInt(img.style.opacity);
+                img.style.opacity -= 0.1;
+            }
+            function hide(){
+                document.getElementById('kuva').style.display="none";
+            }
+
+
+        
+    </script>
+</body></html>

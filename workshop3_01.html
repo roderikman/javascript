@@ -1,0 +1,45 @@
+    <!DOCTYPE html>
+    <html>
+    <body>
+        <button type="button" onclick="button1()"> Button 1 </button>
+        <button type="button" onclick="showtable()"> Button 2</button>
+        <button type="button" onclick="button3()"> Button 3</button>
+        <script>
+function button1() {
+    var d = new Date();
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var y = new Date();
+    alert("You clicked me!:" + days[d.getDay()] + " " + y.getMonth() + " " + y.getFullYear());
+} 
+function showtable() { 
+        document.write("<table> <thead> <tr> <th>Name</th><th>Position</th><th>Salary</th></tr></thead><tbody><tr><td>Monte Falco</td><td>System Architect</td><td>$320,800</td></tr><tr><td>Monte Falterona</td><td>Accountant</td><td>$170,750</td></tr> </tbody> </table>");
+} 
+function button3() {
+    var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
+	       "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
+	       "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
+	       "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria"
+];
+      // DRAW THE HTML TABLE
+  var perrow = 3, // 3 items per row
+      html = "<table><tr>";
+
+  // Loop through array and add table cells
+  for (var i=0; i<persons.length; i++) {
+    html += "<td>" + persons[i] + "</td>";
+    // Break into next row
+    var next = i+1;
+    if (next%perrow==0 && next!=persons.length) {
+      html += "</tr><tr>";
+    }
+  }
+  html += "</tr></table>";
+
+  // ATTACH HTML TO CONTAINER
+  document.write(html);
+}
+
+    </script>
+
+    </body>
+    </html>

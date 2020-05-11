@@ -1,0 +1,25 @@
+<html>
+<body>
+    <h1 id=otsikko>Workshop 4</h1>
+    <div id="data"><input type="checkbox" id="myCheck" onclick="hide()"> Hide me </div>
+        <input type="checkbox" onclick="show()"> Show me
+    <div id="suprise"><input id="supriseCheck" type="checkbox" onclick="suprise()"> Suprise me</div>
+    <script>
+    function hide() {
+          document.getElementById("data").style.display = "none";
+            
+    }
+    function show() {
+          document.getElementById("data").style.display = "block";
+        document.getElementById("myCheck").checked = false;
+    }
+    function suprise() {
+        if (document.getElementById("supriseCheck").checked = true) {
+            document.getElementById("suprise").style.fontSize = "20px";
+        } else if (document.getElementById("supriseCheck").checked = true) {
+            document.getElementById("suprise").style.fontSize = "10px";
+        }
+        
+    }
+    </script>
+</body></html>
